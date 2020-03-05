@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PokeDex.Models.Pokemons>
+
+@{
+    ViewData["Title"] = "Pokemons";
+}
+
+<h1>PokeDex</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create"><i class="fas fa-plus-circle"></i>  Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Avatar)
+            </th>
+            <th>
+               Attacks
+            </th>
+  
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+         
+            <th>
+                Type
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+               
+                <img src="@Url.Action("ImageViewer","Pokemons",new{ id = item.Id} )" class="img-fluid" style="width: 50px; height: 50px"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttackId1Navigation.Attack)<br/>
+                @Html.DisplayFor(modelItem => item.AttackId2Navigation.Attack)<br/>
+                @Html.DisplayFor(modelItem => item.AttackId3Navigation.Attack)<br/>
+                @Html.DisplayFor(modelItem => item.AttackId4Navigation.Attack)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Region.Region)
+            </td>
+      
+            <td>
+    
+                @Html.DisplayFor(modelItem => item.TypeId1Navigation.Type) 
+                @Html.DisplayFor(modelItem => item.TypeId2Navigation.Type)
+             </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="far fa-list-alt"></i>  Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="far fa-list-alt"></i>  Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="far fa-trash-alt"></i>  Delete</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

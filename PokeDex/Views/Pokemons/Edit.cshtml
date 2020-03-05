@@ -1,0 +1,82 @@
+﻿@model PokeDex.Models.Pokemons
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Pokemons</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Avatar" class="control-label"></label>
+                <input asp-for="Avatar" class="form-control" type="file" />
+                <span asp-validation-for="Avatar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegionId" class="control-label"></label>
+                <select asp-for="RegionId" class="form-control" asp-items="ViewBag.RegionId"></select>
+                <span asp-validation-for="RegionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeId1" class="control-label"></label>
+                <select asp-for="TypeId1" class="form-control" asp-items="ViewBag.TypeId1"></select>
+                <span asp-validation-for="TypeId1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeId2" class="control-label"></label>
+                <select asp-for="TypeId2" class="form-control" asp-items="ViewBag.TypeId2">
+                    <option value="">@null</option>
+                </select>
+                <span asp-validation-for="TypeId2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttackId1" class="control-label"></label>
+                <select asp-for="AttackId1" class="form-control" asp-items="ViewBag.AttackId1"></select>
+                <span asp-validation-for="AttackId1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttackId2" class="control-label"></label>
+                <select asp-for="AttackId2" class="form-control" asp-items="ViewBag.AttackId2">
+                    <option value="">@null</option>
+                </select>
+                <span asp-validation-for="AttackId2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttackId3" class="control-label"></label>
+                <select asp-for="AttackId3" class="form-control" asp-items="ViewBag.AttackId3">
+                    <option value="">@null</option>
+                </select>
+                <span asp-validation-for="AttackId3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttackId4" class="control-label"></label>
+                <select asp-for="AttackId4" class="form-control" asp-items="ViewBag.AttackId4">
+                    <option value="">@null</option>
+                </select>
+                <span asp-validation-for="AttackId4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

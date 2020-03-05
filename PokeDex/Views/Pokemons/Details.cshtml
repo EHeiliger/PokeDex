@@ -1,0 +1,57 @@
+﻿@model PokeDex.Models.Pokemons
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pokemons</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Avatar)
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.Avatar)*@
+            <img src="@Url.Action("ImageViewer","Pokemons",new{ id = Model.Id} )" class="img-fluid" style="width: 150px; height: 150px"/>
+        </dd>
+        <dt class="col-sm-2">
+            Attacks
+            @*@Html.DisplayNameFor(model => model.AttackId1Navigation)*@
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AttackId1Navigation.Attack)<br/>
+            @Html.DisplayFor(model => model.AttackId2Navigation.Attack)<br/>
+            @Html.DisplayFor(model => model.AttackId3Navigation.Attack)<br/>
+            @Html.DisplayFor(model => model.AttackId4Navigation.Attack)
+
+        </dd>
+  
+        <dt class = "col-sm-2">
+            Region
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Region.Region)
+        </dd>
+        <dt class = "col-sm-2">
+            Type
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeId1Navigation.Type)<br />
+            @Html.DisplayFor(model => model.TypeId2Navigation.Type)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="far fa-list-alt"></i>  Edit</a>
+    <a asp-action="Index">Back to List</a>
+</div>
